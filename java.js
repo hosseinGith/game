@@ -23,17 +23,11 @@ const checkPointe = document.querySelector('[data-check-pointe]');
 let startgame = false;
 let level = 800;
 let scurValue = 0;
-let div1 = document.createElement('div')
-let div2 = document.createElement('div')
-let div3 = document.createElement('div')
-let div4 = document.createElement('div')
-let div5 = document.createElement('div')
 
 let scur = document.createElement('span')
 setInterval(()=>{
     scur.innerText ='Scur ' + scurValue
 },0)
-
 
 scurContainer.appendChild(scur)
 
@@ -77,10 +71,8 @@ function funcgame(e){
     let x = e.offsetX + 'px';
     let y = e.offsetY + 'px';
 
-    if(!startgame)
-        return;
-
-    if(enemy.style.top == y || enemy === e.target || myChar === e.target || scurContainer === e.target || scur === e.target)
+  
+    if(!startgame || enemy.style.top == y || enemy === e.target || myChar === e.target || scurContainer === e.target || scur === e.target)
         return;
 
     container.offsetX = container.width;
@@ -131,8 +123,22 @@ function funcgame(e){
             checkPointe.style.left
             checkPointe.style.top 
         }
+
+
+
+    
 };
 
+setInterval(()=>{
+    let randomCheckPointeX = Math.random() * 700;
+    let randomCheckPointeY = Math.random() * 400;
+
+    checkPointe.style.left = randomCheckPointeX + 'px';
+    checkPointe.style.top = randomCheckPointeY + 'px';
+    if(!scurValue == 0){
+        scurValue--;
+    }
+},2000)
 
 
 window.addEventListener('load',()=>{
