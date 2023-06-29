@@ -26,7 +26,7 @@ let scurValue = 0;
 
 let scur = document.createElement('span')
 setInterval(()=>{
-    scur.innerText ='Score ' + scurValue
+    scur.innerText ='Scur ' + scurValue
 },0)
 
 scurContainer.appendChild(scur)
@@ -110,34 +110,48 @@ function funcgame(e){
             enemy.style.left =`${myChar.style.left}`;
         },1000);
         };
+       
+        let conWidth = container.offsetWidth
+        let conHeight = container.offsetHeight
+        let checkpWidth = checkPointe.offsetWidth
+        let checkpHeight = checkPointe.offsetHeight
+        x = x > conWidth - checkpWidth ? conWidth - checkpWidth:x
+        y = y > conHeight - checkpHeight ? conHeight - checkpHeight:y
+       
+        let enemyWidth = enemy.offsetWidth
+        let enemyHeight = enemy.offsetHeight
+        x = x > conWidth - enemyWidth ? conWidth - enemyWidth:x
+        y = y > conHeight - enemyHeight ? conHeight - enemyHeight:y
         
-        if(checkPointe === e.target){
-            let randomCheckPointeX = Math.random() * 700;
-            let randomCheckPointeY = Math.random() * 400;
+        let myCharWidth = myChar.offsetWidth
+        let myCharpHeight = myChar.offsetHeight
+        x = x > conWidth - myCharWidth ? conWidth - myCharWidth:x
+        y = y > conHeight - myCharpHeight ? conHeight - myCharpHeight:y 
+        console.log(true)
+        
+        let randomCheckPointeX = Math.random() * 400;
+        let randomCheckPointeY = Math.random() * 400;
 
+        if(checkPointe === e.target){
             checkPointe.style.left = randomCheckPointeX + 'px';
             checkPointe.style.top = randomCheckPointeY + 'px';
-
             scurValue++;
-        }else{
-            checkPointe.style.left
-            checkPointe.style.top 
         }
-
-
+       
 
     
 };
 
 setInterval(()=>{
-    let randomCheckPointeX = Math.random() * 700;
-    let randomCheckPointeY = Math.random() * 400;
-
+    let randomCheckPointeX = Math.random() * 350;
+    let randomCheckPointeY = Math.random() * 350;
+    console.log(randomCheckPointeX ,'\n'  , randomCheckPointeY)
     checkPointe.style.left = randomCheckPointeX + 'px';
     checkPointe.style.top = randomCheckPointeY + 'px';
+    checkPointe.style.animation = 'time 2s linaer infinite'
     if(!scurValue == 0){
         scurValue--;
-    }
+}
 },2000)
 
 
@@ -145,45 +159,46 @@ window.addEventListener('load',()=>{
 if(navigator.platform.valueOf() === 'Win32' || navigator.platform.valueOf() === 'Win64' ){
     loser[0].classList.add('hov');
     loser[1].classList.add('hov');
-    // let randomEnemyX = Math.random() * 700;
-    // let randomEnemyY = Math.random() * 400;
+    let randomEnemyX = Math.random() * 700;
+    let randomEnemyY = Math.random() * 500;
     
-    // let randomMycharX = Math.random() * 700;
-    // let randomMycharY = Math.random() * 400;
+    let randomMycharX = Math.random() * 700;
+    let randomMycharY = Math.random() * 500;
     
-    // let randomCheckPointeX = Math.random() * 700;
-    // let randomCheckPointeY = Math.random() * 400;
-    // if(!startgame){
-    // enemy.style.left = randomEnemyX + 'px';
-    // enemy.style.top = randomEnemyY + 'px';
+    let randomCheckPointeX = Math.random() * 700;
+    let randomCheckPointeY = Math.random() * 500;
+    if(!startgame){
+    enemy.style.left = randomEnemyX + 'px';
+    enemy.style.top = randomEnemyY + 'px';
     
-    // myChar.style.left = randomMycharX + 'px';
-    // myChar.style.top = randomMycharY + 'px';
+    myChar.style.left = randomMycharX + 'px';
+    myChar.style.top = randomMycharY + 'px';
 
-    // checkPointe.style.left = randomCheckPointeX + 'px';
-    // checkPointe.style.top = randomCheckPointeY + 'px';
-    let randomEnemyX = Math.random() * 400;
-    let randomEnemyY = Math.random() * 400;
+    checkPointe.style.left = randomCheckPointeX + 'px';
+    checkPointe.style.top = randomCheckPointeY + 'px';
 
-    let randomMycharX = Math.random() * 400;
-    let randomMycharY = Math.random() * 400;
+};
+}else{
+    let randomEnemyX = Math.random() * 350;
+    let randomEnemyY = Math.random() * 350;
+
+    let randomMycharX = Math.random() * 350;
+    let randomMycharY = Math.random() * 350;
     
-    let randomCheckPointeX = Math.random() * 200;
-    let randomCheckPointeY = Math.random() * 200;
+    let randomCheckPointeX = Math.random() * 350;
+    let randomCheckPointeY = Math.random() * 350;
     if(!startgame){
         enemy.style.left = randomEnemyX + 'px';
         enemy.style.top = randomEnemyY + 'px';
         
         myChar.style.left = randomMycharX + 'px';
         myChar.style.top = randomMycharY + 'px';
-    
+        
+        
         checkPointe.style.left = randomCheckPointeX + 'px';
         checkPointe.style.top = randomCheckPointeY + 'px';
+    }
 };
-}
-else{
-    alert('your divace')
-}
 });
 
 
