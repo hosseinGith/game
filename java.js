@@ -17,6 +17,7 @@ const containerLevel = document.querySelector('[data-container-level]');
 
 const scurContainer = document.querySelector('[data-scur]');
 const checkPointe = document.querySelector('[data-check-pointe]');
+const anmiatPointe = document.querySelector('[data-animation]');
 
 
 
@@ -127,7 +128,7 @@ function funcgame(e){
         let myCharpHeight = myChar.offsetHeight
         x = x > conWidth - myCharWidth ? conWidth - myCharWidth:x
         y = y > conHeight - myCharpHeight ? conHeight - myCharpHeight:y 
-        console.log(true)
+
         
         let randomCheckPointeX = Math.random() * 400;
         let randomCheckPointeY = Math.random() * 400;
@@ -138,22 +139,32 @@ function funcgame(e){
             scurValue++;
         }
        
-
-    
+        
 };
 
 setInterval(()=>{
-    let randomCheckPointeX = Math.random() * 350;
-    let randomCheckPointeY = Math.random() * 350;
-    console.log(randomCheckPointeX ,'\n'  , randomCheckPointeY)
-    checkPointe.style.left = randomCheckPointeX + 'px';
-    checkPointe.style.top = randomCheckPointeY + 'px';
-    checkPointe.style.animation = 'time 2s linaer infinite'
+    anmiatPointe.classList.add('animation')
+    if(navigator.platform.valueOf() === 'Win32' || navigator.platform.valueOf() === 'Win64' ){
+        let randomCheckPointeX = Math.random() * 700;
+        let randomCheckPointeY = Math.random() * 500;
+        checkPointe.style.left = randomCheckPointeX + 'px';
+        checkPointe.style.top = randomCheckPointeY + 'px';
+    }else{
+        let randomCheckPointeX = Math.random() * 350;
+        let randomCheckPointeY = Math.random() * 350;
+        console.log(randomCheckPointeX ,'\n'  , randomCheckPointeY)
+        checkPointe.style.left = randomCheckPointeX + 'px';
+        checkPointe.style.top = randomCheckPointeY + 'px';
+        checkPointe.style.animation = 'time 2s linaer infinite'
+        if(!scurValue == 0){
+            scurValue--;
+    }
+    }
     if(!scurValue == 0){
         scurValue--;
-}
-},2000)
-
+    }
+    },2000)
+    
 
 window.addEventListener('load',()=>{
 if(navigator.platform.valueOf() === 'Win32' || navigator.platform.valueOf() === 'Win64' ){
